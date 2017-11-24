@@ -13,14 +13,14 @@ using namespace std;
 
 char temp[500] = "\0";
 
-int sendip(char *ip)
+int sendip(char *ip, char * szDstMail)
 {
 	CSmtp smtp(
 		25,								/*smtp端口*/
 		"smtp.126.com",					/*smtp服务器地址*/
 		"zhangzhm@126.com",	        /*源邮箱地址*/
 		"password",					/*邮箱密码*/
-		"30796007@qq.com",	    /*目的邮箱地址*/
+		szDstMail,	    /*目的邮箱地址*/
 		ip,					/*主题*/
 		"ip"		/*邮件正文*/
 	);
@@ -137,7 +137,8 @@ void GetIP()
 						else
 						{
 							strcpy(temp, name);
-							sendip(name);
+							sendip(name, "30796007@qq.com");
+							//sendip(name, "527706557@qq.com");
 							printf("邮件已发送。 发送内容：%s\n", name);
 						}
 
